@@ -3,7 +3,7 @@
 import random
 
 def randomLetters(lengthOfLetters):
-    """This is how the random alphanumeric characters are genarated"""
+    """This is how the random alphanumeric characters are generated"""
     word = 'realign singularity polishing buffers'
     passWord = ''
     alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
@@ -81,8 +81,8 @@ def testRunner():
     # You can change the secretKey and authedMessage to any of the key message
     # pairs in the crackerJack mathod to check that it in fact works
 
-    authedMessage="detatch porpoise"
-    secretKey="FnO "
+    authedMessage="This is a test of the emergency broadcast system."
+    secretKey="cCAA"
     out=cueh_hmac_1(secretKey,authedMessage)
     print("%d|%s"%(out, authedMessage))
 
