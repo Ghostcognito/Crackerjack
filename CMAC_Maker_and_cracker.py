@@ -5,7 +5,6 @@ import random
 def randomLetters(lengthOfLetters):
     """This is how the random alphanumeric characters are generated"""
     word = 'realign singularity polishing buffers'
-    passWord = ''
     alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
             'r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8',
             '9','0','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
@@ -35,7 +34,7 @@ def strToNum(inp):
     for i in inp:
         out=out<<8
         out^=ord(i)
-        #print "\t", out
+        #print("\t", out)
     return(out)
 
 def numToStr(inp):
@@ -77,14 +76,18 @@ def cueh_hmac_1(key, message):
     return(cueh_hash_1(key+message))
 
 def testRunner():
-    """The answer for this as it stands now should be 7194"""
+    """This is used to test the secretKey Message pairs"""
+    # The answer for this as it stands now should be 7194
     # You can change the secretKey and authedMessage to any of the key message
     # pairs in the crackerJack function to check that it in fact works
 
     authedMessage="This is a test of the emergency broadcast system."
     secretKey='cCAA'
-    out=cueh_hmac_1(secretKey,authedMessage)
+    out=cueh_hmac_1(secretKey, authedMessage)
     print("%d|%s"%(out, authedMessage))
+
+def hashTest(secretKey):
+    return(numToStr(cueh_hash_1(secretKey)))
 
 def crackerJack(x):
     """This will test if the randomly genarated values for the amount y at a
@@ -96,36 +99,36 @@ def crackerJack(x):
     # with the secretKey.
     # hmac1 corresponds to message1 and so on so forth
 
-    # All the hmacKeys here are valid for the message hmac recived
-    # They were obtained with a value of 100,000 and a crack key leangth of 4
-
     hmac1 = 7194
     message1 = "This is a test of the emergency broadcast system."
-    hmacKey1 = ['Link,', 'Tavc', 's1Q3', 'hqJs', 'Fddf', 'EWgU', 'Xqzs', 'jWHU',
-                'Ajch', 'pnRl', 'aJCH','H4j6', 'mrOp', 'Utwv', 'GUeW', 'tlVn',
-                'vsTq', 'zSXQ', 'q5S7', 'c1A3', 'wFUD', 'Ccaa', 'ccAa', 'cCAA']
+    #HashedKey1 = '\x02"'
+    
     hmac2 = 25193
     message2 = "power up gigamatrix server"
-    hamcKey2 = ['gzn4', 'B6Kx', 'g7ny', 'oxf6']
+    #HashedKey2 = 'N\t'
+    
     hmac3 = 21084
     message3 = "install toaster updates"
-    hmacKey3 = ['Z Sn', 'n8gv', 'G4Nz']
+    #HashedKey3 = 'N\t'
+    
     hmac4 = 25136
     message4 = "realign singularity polishing buffers"
-    hmacKey4 = ['KwB9', 'k9bw', '8 1n']
+    #HashedKey4 = 'N\t'
+    
     hmac5 = 14382
     message5 = "enhance undulation"
-    hmacKey5 = ['kyb7', 'ayh7', 'HvA8', 's4zz', 'cnj ', 'myd7', 'm7dy']
+    #HashedKey5 = 'N\t'
+    
     hmac6 = 23900
     message6 = "detatch porpoise"
-    hmacKey6 = ['svz8']
+    #HashedKey6 = 'N\t'
 
     # Change hmac and message here to the ones you want to test
 
     listOfKeys=[]
     for i in loopRandom(x):
-        y = cueh_hmac_1(i,message1)
-        if y == hmac1:
+        y = cueh_hmac_1(i,message2)
+        if y == hmac2:
             listOfKeys.append(i)
     return(listOfKeys)
 
